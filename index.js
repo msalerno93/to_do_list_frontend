@@ -2,7 +2,12 @@ const endPoint = "http://127.0.0.1:3000/api/v1/lists"
 
 document.addEventListener('DOMContentLoaded', () => {
     getLists()
-});
+
+    const createListForm = document.querySelector("#create-list-form")
+
+    createListForm.addEventListener("submit", (e) => createFormHandler(e));
+
+})
 
     function getLists() {
         fetch(endPoint)
@@ -20,4 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelector('#list-container').innerHTML += listMarkup
                 })
             })
+    }
+
+    function createFormHandler(e) {
+        e.preventDefault()
+        const titleInput = document.querySelector('#input-title').value
+        const descriptionInput = document.querySelector('#input-description').value
+        const categoryInput = document.querySelector('#categories').value
+
     }
