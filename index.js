@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault()
         const titleInput = document.querySelector('#input-title').value
         const descriptionInput = document.querySelector('#input-description').value
-        const categoryInput = document.querySelector('#categories').value
+        const categoryId = parseInt(document.querySelector('#categories').value)
+        postFetch(titleInput, descriptionInput, categoryId)
+    }
 
+    function postFetch(title, description, category_id) {
+        console.log();
     }
