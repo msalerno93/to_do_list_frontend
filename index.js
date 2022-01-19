@@ -36,5 +36,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function postFetch(title, description, category_id) {
-        console.log();
+        const bodyData = {title, description, category_id}
+        fetch(endPoint, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(bodyData)
+        })
+        .then(response => response.json())
+        .then(list => {
+            const listData = list.data
+            console.log(listData)
+            const listMarkup = `
+            <div data-id=${list.id}>
+                <h3>${listData.attributes.title}</h3>
+                <p>${listData.attributes.category.name}</p>
+                <button data-id=${listData.id}>edit</button>
+            </div>
+            <br><br> ` ;
+        
+            document.querySelector('#list-container').innerHTML +=
+            listMarkup;
+        })
     }
