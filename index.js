@@ -16,8 +16,9 @@ function getLists() {
         lists.data.forEach(list => {
             const listMarkup = `
                 <div data-id=${list.id}>
-                    <h3>${list.attributes.title}</h3>
-                    <p>${list.attributes.category.name}</p>
+                    <h1>${list.attributes.title}</h1>
+                    <p>${list.attributes.description}</p>
+                    <h4>${list.attributes.category.name}</h4>
                     <button data-id=${list.id}>edit</button>
                 </div>
                 <br><br> `;
@@ -44,13 +45,12 @@ function postFetch(title, description, category_id) {
     })
     .then(response => response.json())
     .then(list => {
-        console.log(list)
         const listData = list
-        console.log(listData)
         const listMarkup = `
         <div data-id=${list.id}>
-            <h3>${listData.title}</h3>
-            <p>${listData.category.name}</p>
+            <h1>${listData.title}</h1>
+            <p>${listData.description}</p>
+            <h4>${listData.category.name}</h4>
             <button data-id=${listData.id}>edit</button>
         </div>
         <br><br> ` ;
