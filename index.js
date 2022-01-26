@@ -14,22 +14,11 @@ function getLists() {
     .then(res => res.json())
     .then(lists => {
         lists.data.forEach(list => {
-            render(list)
+
+            let newList = new List(list, list.attributes)
+            document.querySelector('#list-container').innerHTML += newList.renderList()
         })
     })
-}
-
-function render(list) {
-    const listMarkup = `
-    <div data-id=${list.id}>
-        <h1>${list.attributes.title}</h1>
-        <p>${list.attributes.description}</p>
-        <h4>${list.attributes.category.name}</h4>
-        <button data-id=${list.id}>edit</button>
-    </div>
-    <br><br> `;
-
-    document.querySelector('#list-container').innerHTML += listMarkup
 }
 
 function createFormHandler(e) {
@@ -50,6 +39,7 @@ function postFetch(title, description, category_id) {
     .then(response => response.json())
     .then(list => {
         const listData = list.data
-        render(listData)
+        let newList = new List(listData, listData.attributes)
+            document.querySelector('#list-container').innerHTML += newList.renderList()
     })
 }
