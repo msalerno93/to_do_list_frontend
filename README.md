@@ -18,6 +18,6 @@ on the front end.
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/msalerno93/to_do_list_frontend. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the code of conduct.
 ## License
-[MIT](https://choosealicense.com/licenses/mit/
+[MIT](https://choosealicense.com/licenses/mit/)
 ## Code of Conduct
 Everyone interacting in the To_do_List's codebases, issue trackers, chat rooms, and mailing lists is expected to follow the code of conduct.
