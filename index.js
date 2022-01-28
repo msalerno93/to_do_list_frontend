@@ -1,12 +1,24 @@
 const endPoint = "http://127.0.0.1:3000/api/v1/lists"
+const endPointCategories = "http://127.0.0.1:3000/api/v1/categories"
 
 document.addEventListener('DOMContentLoaded', () => {
     getLists()
+    getCategories()
 
     const createListForm = document.querySelector("#create-list-form")
 
     createListForm.addEventListener("submit", (e) => createFormHandler(e));
 
+})
+
+document.addEventListener("click", function(e) {
+    const createdList = document.getElementById(`${e.target.dataset.id}`)
+
+    if(e.target.matches("#delete-btn")) {
+      e.preventDefault()
+      deleteList(e.target.dataset.id)
+      createdList.remove(createdList)
+    }
 })
 
 function getLists() {
@@ -20,6 +32,18 @@ function getLists() {
         })
     })
 }
+
+function getCategories() {
+    fetch(endPointCategories)
+    .then(res => res.json())
+    .then(cats => {
+        cats.data.forEach( cat => {
+            let newCat = new Category(cat)
+            document.getElementById('categories').innerHTML += newCat.renderList()
+        })
+    })
+}
+
 
 function createFormHandler(e) {
     e.preventDefault()
@@ -43,3 +67,13 @@ function postFetch(title, description, category_id) {
             document.querySelector('#list-container').innerHTML += newList.renderList()
     })
 }
+
+function deleteList(id) {
+
+    fetch(`${endPoint}/${id}`, {
+       method: "DELETE" 
+   })
+     .then(response => response.json())
+     .then(response => console.log(response))
+ 
+ }
