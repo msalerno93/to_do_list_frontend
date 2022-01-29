@@ -20,9 +20,9 @@ class List {
         return `
         <div class='list-item' id='${this.id}'>
             <h1>${this.title}</h1>
-            <ul>
+            <ol>
                 ${this._renderUl()}
-            </ul>
+            </ol>
             <h4>${this.category.name}</h4>
             <button id='del-${this.id}'>Delete</button>
         </div>
