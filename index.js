@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("click", function(e) {
     let id = e.target.id.slice(4)
     const createdList = document.getElementById(`${e.target.id}`)
-
     if(e.target.matches(`#del-${id}`)) {
       e.preventDefault()
       deleteList(id)
