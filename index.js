@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const createListForm = document.querySelector("#create-list-form")
 
-    createListForm.addEventListener("submit", (e) => createFormHandler(e));
-
+    createListForm.addEventListener("submit", (e) => {
+        createFormHandler(e)
+        createListForm.reset()
+    });
 })
 
 document.addEventListener("click", function(e) {
