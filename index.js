@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const createListForm = document.querySelector("#create-list-form")
 
     createListForm.addEventListener("submit", (e) => {
+        e.preventDefault()
         createFormHandler(e)
         createListForm.reset()
     });
@@ -48,7 +49,6 @@ function getCategories() {
 
 
 function createFormHandler(e) {
-    e.preventDefault()
     const titleInput = document.querySelector('#input-title').value
     const descriptionInput = document.querySelector('#input-description').value
     const categoryId = parseInt(document.querySelector('#categories').value)
