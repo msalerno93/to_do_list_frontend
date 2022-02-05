@@ -16,11 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener("click", function(e) {
     let id = e.target.id.slice(4)
+    let likeID = e.target.id.slice(5)
+    let dislikeID = e.target.id.slice(8)
     const createdList = document.getElementById(`${e.target.id}`)
     if(e.target.matches(`#del-${id}`)) {
       e.preventDefault()
       deleteList(id)
       createdList.parentElement.remove(createdList)
+    }
+    if (e.target.matches(`#like-${likeID}`)) {
+        const list = List.all.find(i => i.id === likeID)
+        list.like()
+        const counter = document.getElementById(`counter-${likeID}`)
+        counter.innerHTML = list.likes
+    }
+    if (e.target.matches(`#dislike-${dislikeID}`)) {
+        const list = List.all.find(i => i.id === dislikeID)
+        list.dislike()
+        const counter = document.getElementById(`counter-${dislikeID}`)
+        counter.innerHTML = list.likes
     }
 })
 
@@ -62,6 +76,7 @@ function postFetch(title, description, category_id) {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(bodyData)
     })
+    // .then is handler of primses //
     .then(response => response.json())
     .then(list => {
         const listData = list.data

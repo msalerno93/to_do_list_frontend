@@ -5,6 +5,7 @@ class List {
         this.title = listAttributes.title
         this.description = listAttributes.description.split(' ')
         this.category = listAttributes.category
+        this.likes = 0
         List.all.push(this)
     }
 
@@ -25,8 +26,21 @@ class List {
             </ol>
             <h4>${this.category.name}</h4>
             <button id='del-${this.id}'>Delete</button>
+            <button id='like-${this.id}'>Like</button>
+            <button id='dislike-${this.id}'>Dislike</button>
+            <h5 class='like-button' id='counter-${this.id}'> 0 </h5>
         </div>
         <br><br> `;
+    }
+
+    like() {
+        this.likes ++
+    }
+
+    dislike() {
+        if (this.likes > 0) {
+        this.likes --
+        }
     }
 }
 
